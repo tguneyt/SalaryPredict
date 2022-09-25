@@ -13,7 +13,7 @@ filename ='finalized_model.sav'
 model = joblib.load(filename)
 # print(f'{location}\{filename}')
 
-selection = st.sidebar.selectbox("Select",("Predict","Batch","Explore"))
+selection = st.sidebar.selectbox("Choose Operation",("Predict","Batch","Explore"))
 st.sidebar.info('This app is created to predict Stack Overflow Survey 2018')
 st.sidebar.image(image)
 
