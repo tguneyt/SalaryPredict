@@ -8,8 +8,8 @@ import os
 
 image = Image.open('idea.png')
 location = os.getcwd()
-filename=f'{location}\\finalized_model.sav'
-
+# filename=f'{location}\\finalized_model.sav'
+filename ='finalized_model.sav'
 model = joblib.load(filename)
 # print(f'{location}\{filename}')
 
