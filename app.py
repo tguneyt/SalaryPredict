@@ -4,12 +4,12 @@ from explore_page import show_explore_page
 from PIL import Image
 import streamlit as st
 import joblib
-
+import os
 
 image = Image.open('idea.png')
 filename='finalized_model.sav'
-
-model = joblib.load(filename)
+location = os.getcwd()
+model = joblib.load(f'{location}/{filename}')
 
 
 selection = st.sidebar.selectbox("Select",("Predict","Batch","Explore"))
