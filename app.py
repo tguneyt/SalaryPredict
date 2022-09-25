@@ -7,10 +7,11 @@ import joblib
 import os
 
 image = Image.open('idea.png')
-filename='finalized_model.sav'
 location = os.getcwd()
-#model = joblib.load(f'{location}\{filename}')
+filename=f'{location}\\finalized_model.sav'
+
 model = joblib.load(filename)
+# print(f'{location}\{filename}')
 
 selection = st.sidebar.selectbox("Select",("Predict","Batch","Explore"))
 st.sidebar.info('This app is created to predict Stack Overflow Survey 2018')
