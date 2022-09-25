@@ -338,10 +338,29 @@ def show_predict_page(model):
    
    
    
+   check_a = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11]
+   
+   # a1 != a2 and a2 != a3 and a3!= a4 and a4!= a5 and a5!= a6 and a6!= a7 and a7!= a8 and a8!= a9 and a9!= a10 and a10!= a11
+   count_a=0
+   
+   for i in check_a:
+      if check_a.count(i)!=1 :
+         count_a+=1
+         
    if btn_predict:
-      if (a1 != a2 != a3!= a4 != a5 != a6!= a7 != a8 != a9!= a10 != a11 !=0 ) or (a1 == a2 == a3 == a4 == a5 == a6== a7 == a8 == a9== a10 == a11==0):
-         # st.subheader("Dogru")
+      if count_a==0 :
+         # if (a1 != a2 != a3!= a4 != a5 != a6!= a7 != a8 != a9!= a10 != a11 !=0 ) : 
+         
+         if  (0 in check_a) or (check_a.count(0)==11):
+            st.subheader('ERROR ! ')
+
+            st.subheader("Please rank Question-22 from 1 to 11 from most important to least important to you. Or leave all 0")
+         # elif if c.count(0)==11:  
+      
          st.subheader(f"The estimated salary is $ {salary}")
+      elif check_a.count(0)==11 :
+         st.subheader(f"The estimated salary is $ {salary}")
+         
       else:
          st.subheader('ERROR ! ')
 
