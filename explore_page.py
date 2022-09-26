@@ -1,11 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-from plotly.subplots import make_subplots
-import plotly.graph_objs as go
-from plotly.offline import iplot
-import seaborn as sns
 
 
 data = pd.read_csv('data_plt.csv')
@@ -15,14 +10,13 @@ def summary_with_graph(dataframe, col_name):
     
     
     st.write(f'### {col_name} Frequency')
-    fig1,ax1 =plt.subplots()
+    # fig1,ax1 =plt.subplots()
     # data= dataframe[col_name].value_counts()
     # ax1.pie(data,labels=data.index, autopct="%1.1f%%",startangle=90,
             
     #         )
     
     data= dataframe[col_name].value_counts()
-    # print(data,end='\n\n')
     st.bar_chart(data)
     
     # ax1.axis("equal")
@@ -30,13 +24,15 @@ def summary_with_graph(dataframe, col_name):
     # data = dataframe[[col_name, 'ConvertedSalary']].groupby([col_name],as_index=False).mean()['ConvertedSalary']
     # st.pyplot(fig1)
     
-    st.write(f'### {col_name} Average Salary')
+    average_salary = round((np.mean(dataframe.groupby([col_name])['ConvertedSalary'].mean().to_list())),2)
+    st.write(f'### Average Salary for {col_name} Values ')
+    st.write(f"Mean for {col_name} : {average_salary}")
     
     data = dataframe.groupby([col_name])['ConvertedSalary'].mean()
-    # print(data)
+    
     st.bar_chart(data)
     
-    # st.pyplot(fig1)
+    
 
 
 def show_explore_page():
